@@ -1,0 +1,66 @@
+# required style sheet to change colors of the sliderInput
+
+# based on an idea found here:
+# https://stackoverflow.com/questions/30879743/changing-the-color-of-the-sliderinput-in-shiny-walkthrough
+
+
+#  version 1.1.0 (30-Nov-2017)
+
+
+ 
+body {
+  background-color: #f0f8ff;
+}
+
+
+.js-irs-0 .irs-bar {
+border-top-color: #d6d6d6;
+border-bottom-color: #d6d6d6;
+background: #ededed;
+} 
+
+.js-irs-0 .irs-bar-edge {
+border-color: #d6d6d6;
+background: #ededed;
+}
+
+
+
+.js-irs-1 .irs-bar {
+border-top-color: #d6d6d6;
+border-bottom-color: #d6d6d6;
+background: #ededed;
+} 
+
+.js-irs-1 .irs-bar-edge {
+border-color: #d6d6d6;
+background: #ededed;
+}
+
+
+
+.js-irs-2 .irs-bar {
+border-top-color: #d6d6d6;
+border-bottom-color: #d6d6d6;
+background: #ededed;
+} 
+
+.js-irs-2 .irs-bar-edge {
+border-color: #d6d6d6;
+background: #ededed;
+}
+
+
+
+.js-irs-3 .irs-bar {
+border-top-color: #d6d6d6;
+border-bottom-color: #d6d6d6;
+background: #ededed;
+} 
+
+.js-irs-3 .irs-bar-edge {
+border-color: #d6d6d6;
+background: #ededed;
+}
+
+
