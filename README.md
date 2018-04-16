@@ -1,8 +1,7 @@
 galaxy2shiny2galaxy
 ===================
 
-This repository will contain example code to combine Galaxy with Shiny. In particular: the Galaxy tool (scatterplot.sh), the tool wrapper (scatterplot.xml), the required files for the shiny app (server.R, ui.R, styles.css), and some helper scripts (import.py, 
-dataset2history_id.sh, encode_history_id.sh).
+This repository will contain example code to combine Galaxy with Shiny. In particular: the Galaxy tool (galaxy2shiny2galaxy.sh), the tool wrapper (galaxy2shiny2galaxy.xml), the required files for the shiny app (server.R, ui.R, styles.css), and some helper scripts (import.py, dataset2history_id.sh, encode_history_id.sh).
 
 All files and scripts will be available by the time of presentation - though, I hope they will be up sooner. Please contact me if you want to see the code already now.
 
