@@ -1,0 +1,99 @@
+<tool id="galaxy2shiny2galaxy" name="galaxy2shiny2galaxy" version="1.0.0" workflow_compatible="true">
+  <description> scatterplot example</description>
+  <command interpreter="bash">galaxy2shiny2galaxy.sh $table $identifier $columns $outputFile1 $outputFile2</command>
+  
+  <inputs>
+  	<param name="table" type="data" format="tabular" label="count table" help="a simple count table"/>  	
+  	<param name="identifier" type="data_column" data_ref="table" multiple="false" value="1" 
+	       label="select column with identifier" help="identifiers must be unique"/>  	  	
+	<param name="columns" type="data_column" data_ref="table" multiple="true" min="2" 
+	       label="select columns with data" help="colum names (i.e.: first row) must be unique"/>  	
+  
+</inputs>
+  <outputs>
+       <data name="outputFile1" type="data" format="tabular" label="counts for ${table.name}" />
+       <data name="outputFile2" type="data" format="html" label="shiny link for ${table.name}" />
+  </outputs> 
+
+<help>
+
+
+
+
+**What it does**
+  
+  This is a simple tool to demonstrate the possibility to generate a shiny app from Galaxy, and store 
+  plots and tables generated with the shiny app back into Galaxy.
+
+  The code can be extended to generate (or wrapp) more sophisticated tools.
+
+**input**
+  
+  In this simple example, the input is already a (tab-delimited) table: 
+  
+  
+::
+
+  Name	width	Sample1	Sample2
+  abb	2536	20	39
+  cdd	2536	20	39
+  eff	2536	20	39
+  ghh	2404	15	3
+  ijj	5398	25	14
+  kll	5398	25	14
+  mnn	5398	25	14
+  opp	15009	74	39
+  qrr	15009	74	39
+  stt	15009	74	39
+  uvv	15009	74	39
+  xyy	14964	74	39
+  
+
+
+
+
+**output**
+  
+  The output is a tabular file with the selected colums, e.g selecting the first as identifier and pick the 3rd and the 4th data columns 
+  
+  
+::
+
+  Name	Sample1	Sample2
+  abb	20	39
+  cdd	20	39
+  eff	20	39
+  ghh	15	3
+  ijj	25	14
+  kll	25	14
+  mnn	25	14
+  opp	74	39
+  qrr	74	39
+  stt	74	39
+  uvv	74	39
+  xyy	74	39
+
+
+
+
+  The second output is a simple html page with a link to the newly generated shiny app.
+
+
+
+
+.. class:: warningmark
+  
+
+
+-----
+
+**Links**
+  
+
+
+`githup page &lt;https://github.com/hrhotz/galaxy2shiny2galaxy&gt;`_
+
+
+
+</help>
+</tool>
