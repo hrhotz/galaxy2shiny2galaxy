@@ -89,8 +89,8 @@ DATAFILE="${ARRAY[-1]}"
 DATASET=$(echo $DATAFILE | tr -dc '0-9')
 
 # second, get the history id from the dataset id and encode it
-sh "$APITOOLS/encode_history_id.sh" < "$APITOOLS/dataset2history_id.wrapper.sh" $DATASET  > "$SHINYHOME"$JOBID"/encoded.history.id"
-	
+HISTORYID=$(sh "$APITOOLS/dataset2history_id.wrapper.sh" $DATASET)
+sh "$APITOOLS/encode_history_id.sh" $HISTORYID  > "$SHINYHOME"$JOBID"/encoded.history.id"
 
 
 
