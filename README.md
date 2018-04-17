@@ -11,6 +11,8 @@ Introduction
 
 For our NGS analysis, we have combined Galaxy with Shiny. Each time a data set (e. g.: a count table from an RNA-Seq experiment) is created in Galaxy, a new app is set up on a local Shiny server. The Galaxy user can then decide to look at the data in a interactive manner and generate a variety of different plots (e. g. heatmaps, correlation plots, scatter plots, MDS plots...) or select data points of interest. If the Galaxy user wants to store a particular plot or data points, the Shiny server has enough privileges to store the visualizations (or data table) back into the original Galaxy history with the help of the Galaxy API. At the same time, each step is tracked in a log file on the Shiny server.
 
+![image](https://github.com/hrhotz/galaxy2shiny2galaxy/blob/master/Galaxy2Shiny2Galaxy.png)
+
 Since the set-up contains several site specific parts (like URLS, Galaxy API keys, etc), this repository will contain uncomplete code, where you need to make your site specific modifications. Also, the actual Galaxy tool (selecting columns in a table) as well as the shiny app is very simple. It is a proof-of-concept, which can be easily modified and extended to your requirements.
 
 
