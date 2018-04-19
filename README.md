@@ -15,14 +15,19 @@ Requirements
 ------------
 
  * You need to be an admin for your Galaxy installation, and need to have access to the Galaxy code in order to install the tool. 
+ * You need read/write access to the Galaxy PostgreSQL database
  
- * The user, the Galaxy server runs as, needs to have write access to the apps directory of a shiny server. 
+ * The user, the Galaxy server runs as, needs to have write access to the apps directory of a Shiny server. 
  
- * The apps directory of the shiny server needs to be mounted on the server(s) Galaxy runs on 
+ * The apps directory of the Shiny server needs to be mounted on the server(s) Galaxy runs on 
 
 
 Installation   [WIP]
 ------------
+
+This tool is currently not available via the Galaxy tool shed. Although, the tool and the scripts in this repository work the code is not polished and should rather be considered as a 'proof of concept' study. There are several places for improvements, I am to discuss with you.
+
+To start 
 
 #### Setting up the Galaxy tool:
 
