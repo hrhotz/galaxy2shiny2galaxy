@@ -25,21 +25,33 @@ Requirements
 Installation   [WIP]
 ------------
 
-This tool is currently not available via the Galaxy tool shed. Although, the tool and the scripts in this repository work the code is not polished and should rather be considered as a 'proof of concept' study. There are several places for improvements, I am to discuss with you.
+This tool is currently not available via the Galaxy tool shed. Although, the tool and the scripts in this repository work, the code is not polished and should rather be considered as a 'proof of concept' study. There are several places for improvements, I am to discuss with you.
 
-To start 
+To start go into the _tools_ directory and clone this repository:
+
+    git clone https://github.com/hrhotz/galaxy2shiny2galaxy.git
+
+you should now have a new directory: _galaxy2shiny2galaxy_
+
 
 #### Setting up the Galaxy tool:
 
-the tool wrapper (galaxy2shiny2galaxy.xml)
+Within the new directory _galaxy2shiny2galaxy_ you will find the tool wrapper (_galaxy2shiny2galaxy.xml_) and the tool (_galaxy2shiny2galaxy.sh_). 
 
-galaxy2shiny2galaxy.sh
+Modify the _tool_conf.xml_ by adding:
 
+    <section name="Galaxy2Shiny2Galaxy" id="galaxy2shiny2galaxy_section">
+    <tool file="galaxy2shiny2galaxy/galaxy2shiny2galaxy.xml"/>
+    </section>
+
+You should now see the new tool in the tool list.
+
+The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy instalation:
 
 
 
 #### The required files for the shiny app:
- 
+
 _ui.R_ 
 
 _server.R_
