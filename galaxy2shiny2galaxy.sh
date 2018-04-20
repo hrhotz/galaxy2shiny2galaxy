@@ -41,10 +41,12 @@ cut -f  $IDENTIFIER,$COLUMNS < $TABLE > $OUTPUTFILE1
 # set up the stage for shiny
 
 ###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps"
-###REPLACE###    SHINYAPPTEMPLATES="/PATH/TO/shiny-server/apps_templates"
+
+###REPLACE###    SHINYAPPTEMPLATES="GALAXYROOT/tools/galaxy2shiny2galaxy/app_templates"
+
 ###REPLACE###    SHINYLINK="BASE URL for SHINY SERVER"
 
-###REPLACE###    APITOOLS="/PATH/TO/api_helpers"
+###REPLACE###    APITOOLS="GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
 
 
 
@@ -58,9 +60,7 @@ JOBID="${array[-2]}"
 
 
 
-
 # make a new directory on the shiny server for the new app and sym-link the table
-# (if the shiny server has no access to the galaxy data, the sym link command needs to be replaced with a copy statement)
 
 mkdir "$SHINYHOME"$JOBID
 ln -s "$OUTPUTFILE1" "$SHINYHOME"$JOBID"/table"
