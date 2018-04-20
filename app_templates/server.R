@@ -32,15 +32,14 @@ function(input, output) {
   history_id <- read.table("encoded.history.id", as.is=TRUE)$V1    
  
 
-###REPLACE###   path_to_API_tools <- "/PATH/TO/api_helpers"
+###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
 
 
-
   
   
   
   
-  # qCount Table 
+  # simple Table 
   ##############  
   
     output$table <- DT::renderDataTable(DT::datatable({
@@ -79,9 +78,10 @@ function(input, output) {
       }
     }
   }
-  
+  	
   output$plotSP <- renderPlot({  
-  
+  # display the scatter plot
+	  
     log_text <- paste(format(Sys.time(), "%a %b %d %Y %H:%M:%S"), "scatter plot", input$xcolSP, input$ycolSP, input$geneSP, sep=" -- ")
     write(log_text, file = "log", append = TRUE, sep = "\n")
   
@@ -89,8 +89,10 @@ function(input, output) {
 
   })
   
+  	
   output$download_SP <- downloadHandler(
-
+  # downlaod the scatter plot
+	  
     filename <- function() {
       paste(Sys.Date(), '_scatterplot.', input$filetype_SP, sep='')
     },
@@ -142,7 +144,6 @@ function(input, output) {
   output$info_SP <- renderPrint({
   # brush scatter plot output
   
-    # define which contrast data to use   
     XcolSP_brush <- paste("log2",input$xcolSP,sep=" ")
     YcolSP_brush <- paste("log2",input$ycolSP,sep=" ")
     
@@ -158,7 +159,7 @@ function(input, output) {
  
  
   output$download_highlighted_Data_SP <- downloadHandler(
-    #Download elements above the cutoffs
+  #Download elements above the cutoffs
     
     filename = function() {
       paste("data-", Sys.Date(), ".tab", sep="")
