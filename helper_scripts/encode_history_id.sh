@@ -4,7 +4,7 @@
 # version 1.0.0 
 
 
-###REPLACE###    cd /PATH/TO/galaxy_home
+###REPLACE###    cd GALAXYROOT
 
 . .venv/bin/activate
 
