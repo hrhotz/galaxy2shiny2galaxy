@@ -6,9 +6,9 @@ For our NGS analysis, we have combined Galaxy with Shiny. Each time a data set (
 
 ![image](https://github.com/hrhotz/galaxy2shiny2galaxy/blob/master/Galaxy2Shiny2Galaxy.png)
 
-Since the set-up relies on several site specific parts (like URLS, Galaxy API keys, PostgreSQL database, etc), this repository contains uncomplete code, where you need to make your site specific modifications (lines start with '###REPLACE###'). Also, the actual Galaxy tool (selecting columns in a table) as well as the shiny app is very simple. It is a proof-of-concept, which can be easily modified and extended to your needs.
+Since the set-up relies on several site specific parts (like URLS, Galaxy API keys, PostgreSQL database, etc), this repository contains uncomplete code, where you need to make your site specific modifications (lines start with '###REPLACE###'). Also, the provided Galaxy tool (selecting columns in a table) as well as the shiny app is very simple. It is a proof-of-concept, which can be easily modified and extended to your needs.
 
-
+In this example, the Galaxy tool is a shell script. It can be easily re-written as an R or python script. It takes a table as input and generates a new table and a simple html page as the two outputs. You can replace the code (here: selecting columns in a table) with any other functionality which creates a table (e.g.: generation of a 'Toptable' in a differential gene expression analysis). Or you could even skip the table generation and take an existing table and only provide the html page as output.
 
 
 Requirements
@@ -26,7 +26,7 @@ Requirements
 Installation 
 ------------
 
-This tool is currently not available via the Galaxy tool shed. Although, the tool and the scripts in this repository work, the code is not polished and should rather be considered as a 'proof of concept' study. There are several places for improvements, I am to discuss with you.
+This tool is currently not available via the Galaxy tool shed. Although, the tool and the scripts in this repository work, the code is not polished. There are several places for improvements, I am happy to discuss with you.
 
 To start go into the _tools_ directory and clone this repository:
 
@@ -47,7 +47,7 @@ Modify the _tool_conf.xml_ by adding:
 
 You should now see the new tool in the tool list.
 
-The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy instalation:
+The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy installation:
 
     ###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps"
 This path is given under 'site_dir' in the Shiny server configuration (_shiny-server.conf_)
@@ -66,11 +66,11 @@ The Galaxy tool relies on several helper scripts in order to work properly:
 
 ##### _dataset2history_id.py_ (_dataset2history_id.wrapper.sh_)
 
-This python scripts makes a simp SQL query to get the "history_id" for the id ("dataset_id") of the first of the two generated dataset. You need to provide the required credentials to connect to the PostgreSQL database:
+This python scripts makes a simple SQL query to get the "history_id" for the id ("dataset_id") of the first of the two generated dataset. You need to provide the required credentials to connect to the PostgreSQL database:
 
     ###REPLACE### conn = pg.DB(host="hostname", user="ro_user", passwd="password", dbname="dbname", port=port)
 
-Depending on your local set up you might need to modify the environemt varaibles. You can do this using the _dataset2history_id.wrapper.sh_ file (chek for ###REPLACE### lines)
+Depending on your local set up you might need to modify the environment variables. You can do this using the _dataset2history_id.wrapper.sh_ file (chek for ###REPLACE### lines).
 
 
 ##### _encode_history_id.sh_
@@ -81,7 +81,7 @@ This is just a wrapper to activate the galaxy virtual environment and call _secr
 
 
 
-If everything is set up properly, the Galaxy tool should now work. If you run it, a new directoy (named by the Galaxy job id) will be created. It will lokk like this:
+If everything is set up properly, the Galaxy tool should now work. If you run it, a new directory (named by the Galaxy job id) will be created. It will look like this:
 
     encoded.history.id  
     table  (a sym link to the dataset)
@@ -105,12 +105,12 @@ This file modifies the default style sheet allowing to change colors of the slid
 
 ##### _server.R_
 
-This is the actual R code to generate the plots. The fuctionality of the download buttons (download plot or downlod dataset) is hacked in order to generate a second png (or svg) file and data table, respectively. This second copy is stored in the apps directory and used by the _import.py_ script to copy back into the Galaxy history.
+This is the actual R code to generate the plots. The functionality of the download buttons (download plot or download dataset) is hacked in order to generate a second png (or svg) file and data table, respectively. This second copy is stored in the apps directory and used by the _import.py_ script to copy back into the Galaxy history.
 
     ###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
 If the Shiny server has no access to the GALAXYROOT directory, you need to move the _import.py_ script to a location accessible to the Shiny server.
 
-After the first use of the Shiny app (i.e.: as soon as you click on the URL for the Shiny app in Galaxy) a log file is created. Each movement in the shiony app is written down in this log file (see all the lines with _write(log_text, file = "log", append = TRUE, sep = "\n")_ ).  
+After the first use of the Shiny app (i.e.: as soon as you click on the URL for the Shiny app in Galaxy) a log file is created. Each movement in the Shiny app is written down in this log file (see all the lines with _write(log_text, file = "log", append = TRUE, sep = "\n")_ ).  
 
 
 ##### _import.py_
@@ -124,7 +124,7 @@ This is the script which copies the data/figures generated by the Shiny app back
     ###REPLACE###  key = "API KEY of an ADMIN USER"
 
 
-You could modify this script by adding a delete statment, once the file is copied back into the Galaxy history
+You could modify this script by adding a delete statement, once the file is copied back into the Galaxy history
 
 
 Support & Bug Reports
