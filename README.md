@@ -48,26 +48,48 @@ You should now see the new tool in the tool list.
 
 The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy instalation:
 
+    ###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps"
+This path is given under 'site_dir' in the Shiny server configuration (_shiny-server.conf_)
 
+    ###REPLACE###    SHINYAPPTEMPLATES="GALAXYROOT/tools/galaxy2shiny2galaxy/app_templates"
 
-#### The required files for the shiny app:
+    ###REPLACE###    SHINYLINK="BASE URL for SHINY SERVER"
 
-_ui.R_ 
-
-_server.R_
-
-_styles.css_
+    ###REPLACE###    APITOOLS="GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
 
 
 #### Helper scripts:
 
-_import.py_
-
-_dataset2history_id.sh_
-
-_encode_history_id.sh_
+The Galaxy tool relies on several helper scripts in order to work properly:
 
 
+##### _dataset2history_id.py_ (_dataset2history_id.wrapper.sh_)
+
+This python scripts makes a simp SQL query to get the "history_id" for the id ("dataset_id") of the first of the two generated dataset. You need to provide the required credentials to connect to the PostgreSQL database:
+
+    ###REPLACE### conn = pg.DB(host="hostname", user="ro_user", passwd="password", dbname="dbname", port=port)
+
+Depending on your local set up you might need to modify the environemt varaibles. You can do this using the _dataset2history_id.wrapper.sh_ file
+
+
+##### _encode_history_id.sh_
+
+
+
+
+
+
+
+If everything is set up properly, the Galaxy tool should now work.
+#### The required files for the shiny app:
+
+##### _ui.R_ 
+
+##### _server.R_
+
+##### _styles.css_
+
+##### _import.py_
 
 
 
