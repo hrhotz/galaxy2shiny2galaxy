@@ -32,7 +32,7 @@ function(input, output) {
   history_id <- read.table("encoded.history.id", as.is=TRUE)$V1    
  
 
-###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
+###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts/"
 
 
   
