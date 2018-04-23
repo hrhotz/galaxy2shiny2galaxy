@@ -47,9 +47,9 @@ Modify the _tool_conf.xml_ by adding:
 
 You should now see the new tool in the tool list.
 
-The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy installation:
+The actual tool (_galaxy2shiny2galaxy.sh_) needs several modifications specific to your Galaxy installation and your Shiny server:
 
-    ###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps"
+    ###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps/"
 This path is given under 'site_dir' in the Shiny server configuration (_shiny-server.conf_)
 
     ###REPLACE###    SHINYAPPTEMPLATES="GALAXYROOT/tools/galaxy2shiny2galaxy/app_templates"
@@ -66,7 +66,7 @@ The Galaxy tool relies on several helper scripts in order to work properly:
 
 ##### _dataset2history_id.py_ (_dataset2history_id.wrapper.sh_)
 
-This python scripts makes a simple SQL query to get the "history_id" for the id ("dataset_id") of the first of the two generated dataset. You need to provide the required credentials to connect to the PostgreSQL database:
+This python scripts (make sure it is executable) makes a simple SQL query to get the "history_id" for the id ("dataset_id") of the first of the two generated dataset. You need to provide the required credentials to connect to the PostgreSQL database:
 
     ###REPLACE### conn = pg.DB(host="hostname", user="ro_user", passwd="password", dbname="dbname", port=port)
 
@@ -81,7 +81,7 @@ This is just a wrapper to activate the galaxy virtual environment and call _secr
 
 
 
-If everything is set up properly, the Galaxy tool should now work. If you run it, a new directory (named by the Galaxy job id) will be created. It will look like this:
+If everything is set up properly, the Galaxy tool should now work. If you run it, a new directory (named by the Galaxy job id) will be created in the apps directory of your Shiny server. It will look like this:
 
     encoded.history.id  
     table  (a sym link to the dataset)
@@ -107,7 +107,7 @@ This file modifies the default style sheet allowing to change colors of the slid
 
 This is the actual R code to generate the plots. The functionality of the download buttons (download plot or download dataset) is hacked in order to generate a second png (or svg) file and data table, respectively. This second copy is stored in the apps directory and used by the _import.py_ script to copy back into the Galaxy history.
 
-    ###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts"
+    ###REPLACE###   path_to_API_tools <- "GALAXYROOT/tools/galaxy2shiny2galaxy/helper_scripts/"
 If the Shiny server has no access to the GALAXYROOT directory, you need to move the _import.py_ script to a location accessible to the Shiny server.
 
 After the first use of the Shiny app (i.e.: as soon as you click on the URL for the Shiny app in Galaxy) a log file is created. Each movement in the Shiny app is written down in this log file (see all the lines with _write(log_text, file = "log", append = TRUE, sep = "\n")_ ).  
