@@ -40,7 +40,7 @@ cut -f  $IDENTIFIER,$COLUMNS < $TABLE > $OUTPUTFILE1
 
 # set up the stage for shiny
 
-###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps"
+###REPLACE###    SHINYHOME="/PATH/TO/shiny-server/apps/"
 
 ###REPLACE###    SHINYAPPTEMPLATES="GALAXYROOT/tools/galaxy2shiny2galaxy/app_templates"
 
